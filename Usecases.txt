@@ -4,7 +4,13 @@ Following are the usecases for the Coffee Management System
 
 The order customization feature aims to provide customers with a personalized coffee ordering experience, allowing them to tailor their beverage preferences to their liking.
 
+<<<<<<< HEAD
 2. Inventory Management:
 Objective:
 Inventory management focuses on maintaining accurate and real-time records of coffee beans, ingredients, and supplies, preventing stockouts and ensuring efficient business operations.
+=======
+3. Cash on Delivery (COD):
+
+The cash on delivery (COD) feature facilitates a payment method where customers pay in cash at the time of coffee delivery.
+>>>>>>> Usecase#3
 
