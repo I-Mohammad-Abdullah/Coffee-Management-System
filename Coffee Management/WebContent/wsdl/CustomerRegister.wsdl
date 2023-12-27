@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="Registeration">
+    <complexType>
+     <sequence>
+      <element name="Name" type="xsd:string"/>
+      <element name="Email" type="xsd:string"/>
+      <element name="Address" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="RegisterationResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="RegisterationRequest">
+
+      <wsdl:part element="impl:Registeration" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="RegisterationResponse">
+
+      <wsdl:part element="impl:RegisterationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerRegister">
+
+      <wsdl:operation name="Registeration">
+
+         <wsdl:input message="impl:RegisterationRequest" name="RegisterationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:RegisterationResponse" name="RegisterationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerRegisterSoapBinding" type="impl:CustomerRegister">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="Registeration">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="RegisterationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="RegisterationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerRegisterService">
+
+      <wsdl:port binding="impl:CustomerRegisterSoapBinding" name="CustomerRegister">
+
+         <wsdlsoap:address location="http://localhost:8080/Coffee_Management/services/CustomerRegister"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

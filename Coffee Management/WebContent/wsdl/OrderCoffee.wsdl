@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="coffee">
+    <complexType>
+     <sequence>
+      <element name="cupSize" type="xsd:string"/>
+      <element name="beantype" type="xsd:string"/>
+      <element name="Quantity" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="coffeeResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="coffeeRequest">
+
+      <wsdl:part element="impl:coffee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="coffeeResponse">
+
+      <wsdl:part element="impl:coffeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OrderCoffee">
+
+      <wsdl:operation name="coffee">
+
+         <wsdl:input message="impl:coffeeRequest" name="coffeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:coffeeResponse" name="coffeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OrderCoffeeSoapBinding" type="impl:OrderCoffee">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="coffee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="coffeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="coffeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OrderCoffeeService">
+
+      <wsdl:port binding="impl:OrderCoffeeSoapBinding" name="OrderCoffee">
+
+         <wsdlsoap:address location="http://localhost:8080/Coffee_Management/services/OrderCoffee"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
