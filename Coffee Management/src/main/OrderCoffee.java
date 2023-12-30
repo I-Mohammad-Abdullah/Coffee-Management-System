@@ -14,7 +14,8 @@ public class OrderCoffee {
 
 //        System.out.println("Enter cup size: ");
 //         String cupSize = scanner.nextLine();
-
+	     int orderId = getOrderId(con);
+	     
          int cupTypeId = getCupTypeId(con, cupSize);
 //     	System.out.println(cupTypeId);
 
@@ -52,7 +53,22 @@ public class OrderCoffee {
 	                preparedStatement.executeUpdate();
 
 	                System.out.println("Order Placed successfully!");
+	                
+	                int newquant = rs.getInt(1)-Quantity;
+	           	 String sql2 = "update coffee_beans set Quantity = ? where ID =?";
+	           	 PreparedStatement preparedSt = con.prepareStatement(sql2);
+	           	 preparedSt.setInt(1, newquant);
+	           	 preparedSt.setInt(2, beanTypeId);
+	           	  preparedSt.executeUpdate();
+	           	  
+	           	String sql3 = "INSERT INTO delivery(Order_ID,Status) VALUES (?, 'In Progress')";
+	            try (PreparedStatement Stat = con.prepareStatement(sql3)) {
+	            	Stat.setInt(1,orderId);
+	                
+	                
+	                Stat.executeUpdate();
 	            }
+	            
 	            
 	            
 		 
@@ -61,17 +77,13 @@ public class OrderCoffee {
 	                e.printStackTrace();
 	            }
 		 }
+	            }
         	 
 		 else {
             
              System.out.println("Error: Insufficient quantity of beans available!");
          }
-        	 int newquant = rs.getInt(1)-Quantity;
-        	 String sql2 = "update coffee_beans set Quantity = ? where ID =?";
-        	 PreparedStatement preparedSt = con.prepareStatement(sql2);
-        	 preparedSt.setInt(1, newquant);
-        	 preparedSt.setInt(2, beanTypeId);
-        	  preparedSt.executeUpdate();
+        	
 	            con.close();
 		 }
 		 catch (Exception e) {
@@ -116,11 +128,14 @@ public class OrderCoffee {
     	Statement stmt=con.createStatement();
     	ResultSet rs=stmt.executeQuery("select * from customer");
 
-//    	while(rs.next())
-//    	{
-//    	System.out.println("ID: " + rs.getInt(1) + " Name: " + rs.getString(2) + " Designation: "
-//    	+ rs.getString(3));
-//    	}
+    	rs.last();
+    	return rs.getInt(1);
+    	 
+    }
+    private static int getOrderId(Connection con) throws Exception {
+    	Statement stmt=con.createStatement();
+    	ResultSet rs=stmt.executeQuery("select * from order_coffee");
+
     	rs.last();
     	return rs.getInt(1);
     	 
