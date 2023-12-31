@@ -7,8 +7,13 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
+
   <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+=======
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+ CashonDelivery
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -22,6 +27,22 @@
  <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+
+ <ns1:service name="CashonDelivery" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="delivery" qname="ns1:delivery" soapAction="" xmlns:ns1="http://main" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:orderId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns2:parameter qname="ns1:status" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns2:operation>
+  <ns1:parameter name="allowedMethods" value="delivery"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="CashonDelivery"/>
+  <ns1:parameter name="className" value="main.CashonDelivery"/>
+  <ns1:parameter name="wsdlServicePort" value="CashonDelivery"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="CashonDeliveryService"/>
+ </ns1:service>
+CashonDelivery
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>
   <ns1:parameter name="enableRemoteAdmin" value="false"/>
@@ -29,6 +50,7 @@
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
  <ns1:service name="CustomerRegister" provider="java:RPC" style="wrapped" use="literal">
+
   <ns2:operation name="registeration" qname="ns1:Registeration" soapAction="" xmlns:ns1="http://main" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
    <ns2:parameter qname="ns1:Email" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
@@ -40,6 +62,19 @@
   <ns1:parameter name="className" value="main.CustomerRegister"/>
   <ns1:parameter name="wsdlServicePort" value="CustomerRegister"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+
+  <ns1:operation name="registeration" qname="ns2:Registeration" soapAction="" xmlns:ns2="http://main">
+   <ns1:parameter qname="ns2:Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns2:Email" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns2:Address" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="registeration"/>
+  <ns1:parameter name="wsdlPortType" value="CustomerRegister"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="CustomerRegister"/>
+  <ns1:parameter name="className" value="main.CustomerRegister"/>
+CashonDelivery
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="CustomerRegisterService"/>
  </ns1:service>
@@ -48,6 +83,7 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="OrderCoffee" provider="java:RPC" style="wrapped" use="literal">
+
   <ns1:operation name="coffee" qname="ns2:coffee" soapAction="" xmlns:ns2="http://main">
    <ns1:parameter qname="ns2:cupSize" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
    <ns1:parameter qname="ns2:beantype" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
@@ -87,7 +123,46 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="InventoryService"/>
  </ns1:service>
- origin/Inventory
+
+  <ns1:operation name="coffee" qname="ns3:coffee" soapAction="" xmlns:ns3="http://main">
+   <ns1:parameter qname="ns3:cupSize" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:beantype" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:Quantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="coffee"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="OrderCoffee"/>
+  <ns1:parameter name="className" value="main.OrderCoffee"/>
+  <ns1:parameter name="wsdlServicePort" value="OrderCoffee"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="OrderCoffeeService"/>
+ </ns1:service>
+ <ns1:service name="Inventory" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="insertCoffeeBean" qname="ns4:insertCoffeeBean" soapAction="" xmlns:ns4="http://main">
+   <ns1:parameter qname="ns4:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:smallCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:mediumCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:largeCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns4:quantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deleteCoffeeBean" qname="ns5:deleteCoffeeBean" soapAction="" xmlns:ns5="http://main">
+   <ns1:parameter qname="ns5:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateCoffeeBeanQuantity" qname="ns6:updateCoffeeBeanQuantity" soapAction="" xmlns:ns6="http://main">
+   <ns1:parameter qname="ns6:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns6:newQuantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="updateCoffeeBeanQuantity insertCoffeeBean deleteCoffeeBean"/>
+  <ns1:parameter name="wsdlPortType" value="Inventory"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="Inventory"/>
+  <ns1:parameter name="className" value="main.Inventory"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="InventoryService"/>
+ </ns1:service>
+>>>>>>> CashonDelivery
  <ns1:transport name="http">
   <ns1:requestFlow>
    <ns1:handler type="URLMapper"/>
