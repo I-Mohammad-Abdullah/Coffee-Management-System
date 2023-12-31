@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2023 at 08:53 PM
+-- Generation Time: Dec 28, 2023 at 01:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,8 +43,8 @@ CREATE TABLE `coffee_beans` (
 --
 
 INSERT INTO `coffee_beans` (`ID`, `Bean_Type`, `Bean_Price_small_cup`, `Bean_Price_medium_cup`, `Bean_Price_large_cup`, `Quantity`) VALUES
-(1, ' Arabica', 200, 300, 500, -1),
-(2, 'Robusta', 250, 350, 420, 25),
+(1, ' Arabica', 200, 300, 500, 30),
+(2, 'Robusta', 250, 350, 420, 51),
 (3, 'Excelsa', 150, 220, 250, 30),
 (4, 'Liberica', 170, 240, 280, 15);
 
@@ -95,6 +95,25 @@ INSERT INTO `customer` (`ID`, `Name`, `Email`, `Address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `ID` int(11) NOT NULL,
+  `Order_ID` int(11) NOT NULL,
+  `Status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `delivery`
+--
+
+INSERT INTO `delivery` (`ID`, `Order_ID`, `Status`) VALUES
+(1, 18, 'Completed');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_coffee`
 --
 
@@ -120,7 +139,14 @@ INSERT INTO `order_coffee` (`ID`, `Quantity`, `Bean_ID`, `Cust_ID`, `Cup_ID`) VA
 (9, 15, 1, 4, 1),
 (10, 15, 1, 4, 1),
 (11, 15, 1, 4, 1),
-(12, 2, 1, 4, 2);
+(12, 2, 1, 4, 2),
+(13, 20, 2, 6, 1),
+(14, 20, 2, 6, 1),
+(15, 3, 2, 6, 2),
+(16, 3, 2, 6, 2),
+(17, 1, 2, 6, 3),
+(18, 5, 1, 6, 3),
+(19, 5, 2, 6, 3);
 
 --
 -- Indexes for dumped tables
@@ -145,6 +171,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `order_coffee`
 --
 ALTER TABLE `order_coffee`
@@ -158,7 +190,7 @@ ALTER TABLE `order_coffee`
 -- AUTO_INCREMENT for table `coffee_beans`
 --
 ALTER TABLE `coffee_beans`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cup_type`
@@ -173,10 +205,16 @@ ALTER TABLE `customer`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `order_coffee`
 --
 ALTER TABLE `order_coffee`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
