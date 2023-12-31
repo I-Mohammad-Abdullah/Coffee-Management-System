@@ -62,6 +62,32 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="OrderCoffeeService"/>
  </ns1:service>
+
+ <ns1:service name="Inventory" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="insertCoffeeBean" qname="ns3:insertCoffeeBean" soapAction="" xmlns:ns3="http://main">
+   <ns1:parameter qname="ns3:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:smallCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:mediumCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:largeCupPrice" type="xsd:double" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns3:quantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deleteCoffeeBean" qname="ns4:deleteCoffeeBean" soapAction="" xmlns:ns4="http://main">
+   <ns1:parameter qname="ns4:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateCoffeeBeanQuantity" qname="ns5:updateCoffeeBeanQuantity" soapAction="" xmlns:ns5="http://main">
+   <ns1:parameter qname="ns5:beanType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns5:newQuantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="updateCoffeeBeanQuantity insertCoffeeBean deleteCoffeeBean"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Inventory"/>
+  <ns1:parameter name="className" value="main.Inventory"/>
+  <ns1:parameter name="wsdlServicePort" value="Inventory"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
+  <ns1:parameter name="wsdlServiceElement" value="InventoryService"/>
+ </ns1:service>
+ origin/Inventory
  <ns1:transport name="http">
   <ns1:requestFlow>
    <ns1:handler type="URLMapper"/>

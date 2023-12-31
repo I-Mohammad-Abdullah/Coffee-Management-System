@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from InventoryService WSDL service -->
+
+  <service name="Inventory" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://main"/>
+      <parameter name="wsdlServiceElement" value="InventoryService"/>
+      <parameter name="schemaQualified" value="http://main"/>
+      <parameter name="wsdlServicePort" value="Inventory"/>
+      <parameter name="className" value="main.Inventory"/>
+      <parameter name="wsdlPortType" value="Inventory"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://main" name="insertCoffeeBean" qname="operNS:insertCoffeeBean" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanType" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:smallCupPrice" type="tns:double"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mediumCupPrice" type="tns:double"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:largeCupPrice" type="tns:double"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://main" name="deleteCoffeeBean" qname="operNS:deleteCoffeeBean" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanType" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://main" name="updateCoffeeBeanQuantity" qname="operNS:updateCoffeeBeanQuantity" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanType" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:newQuantity" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="updateCoffeeBeanQuantity insertCoffeeBean deleteCoffeeBean"/>
+
+  </service>
+</deployment>
