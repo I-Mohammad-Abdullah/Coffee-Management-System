@@ -14,7 +14,7 @@ public class OrderCoffee {
 
 //        System.out.println("Enter cup size: ");
 //         String cupSize = scanner.nextLine();
-	     int orderId = getOrderId(con);
+	   //  int orderId = getOrderId(con);
 	     
          int cupTypeId = getCupTypeId(con, cupSize);
 //     	System.out.println(cupTypeId);
@@ -30,8 +30,7 @@ public class OrderCoffee {
        //   System.out.println(CustomerId);
  
 //         System.out.println("Enter Quantity: ");
-//         int Quantity = scanner.nextInt();
-//         
+//         int Quantity = scanner.nextInt();         
          
          //System.out.println(rs.getInt(1));
          
@@ -60,7 +59,9 @@ public class OrderCoffee {
 	           	 preparedSt.setInt(1, newquant);
 	           	 preparedSt.setInt(2, beanTypeId);
 	           	  preparedSt.executeUpdate();
+	         
 	           	  
+	           	  int orderId = getOrderId(con);
 	           	String sql3 = "INSERT INTO delivery(Order_ID,Status) VALUES (?, 'In Progress')";
 	            try (PreparedStatement Stat = con.prepareStatement(sql3)) {
 	            	Stat.setInt(1,orderId);
