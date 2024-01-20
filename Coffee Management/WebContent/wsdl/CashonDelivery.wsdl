@@ -15,6 +15,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="deliveryResponse">
     <complexType/>
    </element>
+   <element name="isOrderIdExists">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isOrderIdExistsResponse">
+    <complexType>
+     <sequence>
+      <element name="isOrderIdExistsReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
@@ -34,6 +48,22 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="isOrderIdExistsResponse">
+
+      <wsdl:part element="impl:isOrderIdExistsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isOrderIdExistsRequest">
+
+      <wsdl:part element="impl:isOrderIdExists" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="CashonDelivery">
 
       <wsdl:operation name="delivery">
@@ -43,6 +73,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:deliveryResponse" name="deliveryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isOrderIdExists">
+
+         <wsdl:input message="impl:isOrderIdExistsRequest" name="isOrderIdExistsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isOrderIdExistsResponse" name="isOrderIdExistsResponse">
 
        </wsdl:output>
 
@@ -65,6 +107,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="deliveryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isOrderIdExists">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isOrderIdExistsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isOrderIdExistsResponse">
 
             <wsdlsoap:body use="literal"/>
 

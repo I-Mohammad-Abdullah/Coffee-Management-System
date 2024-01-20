@@ -11,11 +11,24 @@
       <parameter name="wsdlPortType" value="OrderCoffee"/>
       <parameter name="typeMappingVersion" value="1.2"/>
       <operation xmlns:operNS="http://main" name="coffee" qname="operNS:coffee" soapAction="">
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cupSize" type="tns:string"/>
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beantype" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cupSizeID" type="tns:int"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beantypeID" type="tns:int"/>
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Quantity" type="tns:int"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Email" type="tns:string"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Address" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="coffee"/>
+      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCupTypeId" qname="operNS:getCupTypeId" returnQName="retNS:getCupTypeIdReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cupType" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getBeanTypeId" qname="operNS:getBeanTypeId" returnQName="retNS:getBeanTypeIdReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanType" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkQuantityAvailable" qname="operNS:checkQuantityAvailable" returnQName="retNS:checkQuantityAvailableReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanTypeID" type="tns:int"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestedQuantity" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getCupTypeId checkQuantityAvailable coffee getBeanTypeId"/>
 
   </service>
 </deployment>

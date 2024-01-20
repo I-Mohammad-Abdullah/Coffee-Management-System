@@ -7,21 +7,115 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="coffee">
     <complexType>
      <sequence>
-      <element name="cupSize" type="xsd:string"/>
-      <element name="beantype" type="xsd:string"/>
+      <element name="cupSizeID" type="xsd:int"/>
+      <element name="beantypeID" type="xsd:int"/>
       <element name="Quantity" type="xsd:int"/>
+      <element name="name" type="xsd:string"/>
+      <element name="Email" type="xsd:string"/>
+      <element name="Address" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
    <element name="coffeeResponse">
     <complexType/>
    </element>
+   <element name="getCupTypeId">
+    <complexType>
+     <sequence>
+      <element name="cupType" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCupTypeIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getCupTypeIdReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBeanTypeId">
+    <complexType>
+     <sequence>
+      <element name="beanType" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBeanTypeIdResponse">
+    <complexType>
+     <sequence>
+      <element name="getBeanTypeIdReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkQuantityAvailable">
+    <complexType>
+     <sequence>
+      <element name="beanTypeID" type="xsd:int"/>
+      <element name="requestedQuantity" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkQuantityAvailableResponse">
+    <complexType>
+     <sequence>
+      <element name="checkQuantityAvailableReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
+
+   <wsdl:message name="getBeanTypeIdResponse">
+
+      <wsdl:part element="impl:getBeanTypeIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkQuantityAvailableResponse">
+
+      <wsdl:part element="impl:checkQuantityAvailableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
 
    <wsdl:message name="coffeeRequest">
 
       <wsdl:part element="impl:coffee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBeanTypeIdRequest">
+
+      <wsdl:part element="impl:getBeanTypeId" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkQuantityAvailableRequest">
+
+      <wsdl:part element="impl:checkQuantityAvailable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCupTypeIdResponse">
+
+      <wsdl:part element="impl:getCupTypeIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCupTypeIdRequest">
+
+      <wsdl:part element="impl:getCupTypeId" name="parameters">
 
       </wsdl:part>
 
@@ -49,6 +143,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getCupTypeId">
+
+         <wsdl:input message="impl:getCupTypeIdRequest" name="getCupTypeIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCupTypeIdResponse" name="getCupTypeIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBeanTypeId">
+
+         <wsdl:input message="impl:getBeanTypeIdRequest" name="getBeanTypeIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBeanTypeIdResponse" name="getBeanTypeIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkQuantityAvailable">
+
+         <wsdl:input message="impl:checkQuantityAvailableRequest" name="checkQuantityAvailableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkQuantityAvailableResponse" name="checkQuantityAvailableResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="OrderCoffeeSoapBinding" type="impl:OrderCoffee">
@@ -66,6 +196,60 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="coffeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCupTypeId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCupTypeIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCupTypeIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBeanTypeId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBeanTypeIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBeanTypeIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkQuantityAvailable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkQuantityAvailableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkQuantityAvailableResponse">
 
             <wsdlsoap:body use="literal"/>
 

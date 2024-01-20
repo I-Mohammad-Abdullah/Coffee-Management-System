@@ -12,9 +12,9 @@
       <parameter name="typeMappingVersion" value="1.2"/>
       <operation xmlns:operNS="http://main" name="insertCoffeeBean" qname="operNS:insertCoffeeBean" soapAction="">
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:beanType" type="tns:string"/>
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:smallCupPrice" type="tns:double"/>
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mediumCupPrice" type="tns:double"/>
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:largeCupPrice" type="tns:double"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:smallCupPrice" type="tns:int"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mediumCupPrice" type="tns:int"/>
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:largeCupPrice" type="tns:int"/>
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:int"/>
       </operation>
       <operation xmlns:operNS="http://main" name="deleteCoffeeBean" qname="operNS:deleteCoffeeBean" soapAction="">
