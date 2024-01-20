@@ -8,9 +8,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="beanType" type="xsd:string"/>
-      <element name="smallCupPrice" type="xsd:double"/>
-      <element name="mediumCupPrice" type="xsd:double"/>
-      <element name="largeCupPrice" type="xsd:double"/>
+      <element name="smallCupPrice" type="xsd:int"/>
+      <element name="mediumCupPrice" type="xsd:int"/>
+      <element name="largeCupPrice" type="xsd:int"/>
       <element name="quantity" type="xsd:int"/>
      </sequence>
     </complexType>
