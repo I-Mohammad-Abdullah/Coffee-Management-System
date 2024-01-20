@@ -11,7 +11,7 @@ public class Inventory {
 	
 
 
-    public void insertCoffeeBean(String beanType, double smallCupPrice, double mediumCupPrice, double largeCupPrice,
+    public void insertCoffeeBean(String beanType, int smallCupPrice, int mediumCupPrice, int largeCupPrice,
             int quantity) throws Exception {
     	
         
@@ -21,9 +21,9 @@ public class Inventory {
             String sql = "INSERT INTO coffee_beans(Bean_Type, Bean_Price_small_cup, Bean_Price_medium_cup, Bean_Price_large_cup, Quantity) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
                 preparedStatement.setString(1, beanType);
-                preparedStatement.setDouble(2, smallCupPrice);
-                preparedStatement.setDouble(3, mediumCupPrice);
-                preparedStatement.setDouble(4, largeCupPrice);
+                preparedStatement.setInt(2, smallCupPrice);
+                preparedStatement.setInt(3, mediumCupPrice);
+                preparedStatement.setInt(4, largeCupPrice);
                 preparedStatement.setInt(5, quantity);
 
                 preparedStatement.executeUpdate();

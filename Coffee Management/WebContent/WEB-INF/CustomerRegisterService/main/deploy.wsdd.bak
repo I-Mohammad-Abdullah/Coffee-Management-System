@@ -20,7 +20,7 @@
       <parameter name="className" value="main.CustomerRegisterSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="CustomerRegister"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="registeration" qname="operNS:Registeration" xmlns:operNS="http://main" soapAction="" >
+      <operation name="registeration" qname="operNS:registeration" xmlns:operNS="http://main" soapAction="" >
         <parameter qname="pns:Name" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:Email" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:Address" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>

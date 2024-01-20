@@ -24,7 +24,10 @@
         <parameter qname="pns:orderId" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:status" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="delivery"/>
+      <operation name="isOrderIdExists" qname="operNS:isOrderIdExists" xmlns:operNS="http://main" returnQName="retNS:isOrderIdExistsReturn" xmlns:retNS="http://main" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="delivery isOrderIdExists"/>
 
   </service>
 </deployment>

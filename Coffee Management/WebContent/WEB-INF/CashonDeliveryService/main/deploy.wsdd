@@ -14,7 +14,10 @@
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:orderId" type="tns:int"/>
         <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:status" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="delivery"/>
+      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="isOrderIdExists" qname="operNS:isOrderIdExists" returnQName="retNS:isOrderIdExistsReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:orderId" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="delivery isOrderIdExists"/>
 
   </service>
 </deployment>
