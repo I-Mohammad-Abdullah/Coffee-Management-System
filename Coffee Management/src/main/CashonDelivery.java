@@ -29,4 +29,29 @@ public class CashonDelivery {
             e.printStackTrace();
         }
     }
+    public boolean isOrderIdExists(int orderId) {
+        boolean orderIdExists = false;
+
+        try {
+        	 Class.forName("com.mysql.jdbc.Driver");
+	            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee management", "root", "");
+            String sql = "SELECT * FROM delivery WHERE Order_ID = ?";
+            try (PreparedStatement preparedSt = con.prepareStatement(sql)) {
+                preparedSt.setInt(1, orderId);
+                try (ResultSet resultSet = preparedSt.executeQuery()) {
+                    if (resultSet.next()) {
+                        // Order ID exists in the table
+                        orderIdExists = true;
+                    }
+                }
+            }
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return orderIdExists;
+    }
 }

@@ -5,50 +5,31 @@ import java.sql.*;
 
 public class OrderCoffee {
 
-	public void coffee(String cupSize, String beantype, int Quantity) {
+	public void coffee(int cupSizeID, int beantypeID, int Quantity,String name, String Email,String Address) {
 		 try {
 	            Class.forName("com.mysql.jdbc.Driver");
 	            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee management", "root", "");
-	       //     Scanner scanner = new Scanner(System.in);
-	            
-
-//        System.out.println("Enter cup size: ");
-//         String cupSize = scanner.nextLine();
-	   //  int orderId = getOrderId(con);
-	     
-         int cupTypeId = getCupTypeId(con, cupSize);
-//     	System.out.println(cupTypeId);
-
+	   	     
+       
          
-//         System.out.println("Select Bean: ");
-//       
-//         String beantype= scanner.nextLine();
-
-         int beanTypeId = getBeanTypeId(con, beantype);
-         
-         int CustomerId = getCustomerId(con);
-       //   System.out.println(CustomerId);
- 
-//         System.out.println("Enter Quantity: ");
-//         int Quantity = scanner.nextInt();         
-         
-         //System.out.println(rs.getInt(1));
+       
          
         	 String sql1 = "select Quantity from coffee_beans where ID =?";
         	 PreparedStatement preparedStmt = con.prepareStatement(sql1);
-        	 preparedStmt.setInt(1, beanTypeId);
+        	 preparedStmt.setInt(1, beantypeID);
         	 ResultSet rs = preparedStmt.executeQuery();
         	 rs.next();
         	 if(Quantity<=rs.getInt(1)) {
         		 
 
-	            String sql = "INSERT INTO order_coffee(Cup_ID,Bean_ID,Quantity,Cust_ID) VALUES (?, ?, ?,?)";
+	            String sql = "INSERT INTO order_coffee(Cup_ID,Bean_ID,Quantity,Customer_Name,Customer_Email,Customer_Address) VALUES (?, ?, ?,?,?,?)";
 	            try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-	            	preparedStatement.setInt(1, cupTypeId);
-	                preparedStatement.setInt(2, beanTypeId);
+	            	preparedStatement.setInt(1, cupSizeID);
+	                preparedStatement.setInt(2, beantypeID);
 	                preparedStatement.setInt(3, Quantity);
-	                preparedStatement.setInt(4, CustomerId);
-	                
+	                preparedStatement.setString(4, name);
+	                preparedStatement.setString(5, Email);
+	                preparedStatement.setString(6, Address);
 	                preparedStatement.executeUpdate();
 
 	                System.out.println("Order Placed successfully!");
@@ -57,7 +38,7 @@ public class OrderCoffee {
 	           	 String sql2 = "update coffee_beans set Quantity = ? where ID =?";
 	           	 PreparedStatement preparedSt = con.prepareStatement(sql2);
 	           	 preparedSt.setInt(1, newquant);
-	           	 preparedSt.setInt(2, beanTypeId);
+	           	 preparedSt.setInt(2, beantypeID);
 	           	  preparedSt.executeUpdate();
 	         
 	           	  
@@ -92,7 +73,9 @@ public class OrderCoffee {
 	        }
 	}
 	
-	private static int getCupTypeId(Connection con, String cupType) throws Exception {
+	public int getCupTypeId( String cupType) throws Exception {
+		 Class.forName("com.mysql.jdbc.Driver");
+         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee management", "root", "");
         String query = "SELECT ID FROM cup_type WHERE Cup_Size = ?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, cupType);
@@ -111,7 +94,9 @@ public class OrderCoffee {
 	
 	
 	// Helper method to get bean type ID based on user input
-    private static int getBeanTypeId(Connection con, String beanType) throws Exception {
+    public int getBeanTypeId( String beanType) throws Exception {
+    	 Class.forName("com.mysql.jdbc.Driver");
+         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee management", "root", "");
         String query = "SELECT ID FROM coffee_beans WHERE Bean_Type = ?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, beanType);
@@ -125,15 +110,7 @@ public class OrderCoffee {
         }
     }
     
-    private static int getCustomerId(Connection con) throws Exception {
-    	Statement stmt=con.createStatement();
-    	ResultSet rs=stmt.executeQuery("select * from customer");
-
-    	rs.last();
-    	return rs.getInt(1);
-    	 
-    }
-    private static int getOrderId(Connection con) throws Exception {
+       private static int getOrderId(Connection con) throws Exception {
     	Statement stmt=con.createStatement();
     	ResultSet rs=stmt.executeQuery("select * from order_coffee");
 
@@ -141,6 +118,27 @@ public class OrderCoffee {
     	return rs.getInt(1);
     	 
     }
+       
+       public boolean checkQuantityAvailable(int beanTypeID, int requestedQuantity) {
+    	    try {
+    	    	 Class.forName("com.mysql.jdbc.Driver");
+    	         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee management", "root", "");
+
+    	        String sql = "SELECT Quantity FROM coffee_beans WHERE ID = ?";
+    	        try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+    	            preparedStatement.setInt(1, beanTypeID);
+    	            ResultSet resultSet = preparedStatement.executeQuery();
+
+    	            if (resultSet.next()) {
+    	                int availableQuantity = resultSet.getInt("Quantity");
+    	                return requestedQuantity <= availableQuantity;
+    	            }
+    	        }
+    	    } catch (Exception e) {
+    	        e.printStackTrace();
+    	    }
+    	    return false;
+    	}
 
 
 }
