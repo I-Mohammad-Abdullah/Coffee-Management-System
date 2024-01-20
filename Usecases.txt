@@ -14,3 +14,5 @@ Inventory management focuses on maintaining accurate and real-time records of co
 The cash on delivery (COD) feature facilitates a payment method where customers pay in cash at the time of coffee delivery.
 >>>>>>> Usecase#3
 
+
+completed!
