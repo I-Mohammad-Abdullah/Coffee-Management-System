@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -31,11 +31,11 @@
    <ns1:parameter qname="ns2:orderId" type="xsd:int"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="delivery isOrderIdExists"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="CashonDelivery"/>
-  <ns1:parameter name="className" value="main.CashonDelivery"/>
-  <ns1:parameter name="wsdlServicePort" value="CashonDelivery"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="CashonDelivery"/>
+  <ns1:parameter name="className" value="main.CashonDelivery"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="CashonDeliveryService"/>
  </ns1:service>
@@ -52,11 +52,11 @@
    <ns1:parameter qname="ns3:Address" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="registeration"/>
-  <ns1:parameter name="wsdlPortType" value="CustomerRegister"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
-  <ns1:parameter name="wsdlServicePort" value="CustomerRegister"/>
+  <ns1:parameter name="wsdlPortType" value="CustomerRegister"/>
   <ns1:parameter name="className" value="main.CustomerRegister"/>
+  <ns1:parameter name="wsdlServicePort" value="CustomerRegister"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="CustomerRegisterService"/>
  </ns1:service>
@@ -84,11 +84,11 @@
    <ns1:parameter qname="ns7:requestedQuantity" type="xsd:int"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="getCupTypeId checkQuantityAvailable coffee getBeanTypeId"/>
-  <ns1:parameter name="wsdlPortType" value="OrderCoffee"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
-  <ns1:parameter name="wsdlServicePort" value="OrderCoffee"/>
+  <ns1:parameter name="wsdlPortType" value="OrderCoffee"/>
   <ns1:parameter name="className" value="main.OrderCoffee"/>
+  <ns1:parameter name="wsdlServicePort" value="OrderCoffee"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="OrderCoffeeService"/>
  </ns1:service>
@@ -108,11 +108,11 @@
    <ns1:parameter qname="ns10:newQuantity" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="updateCoffeeBeanQuantity insertCoffeeBean deleteCoffeeBean"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Inventory"/>
-  <ns1:parameter name="className" value="main.Inventory"/>
-  <ns1:parameter name="wsdlServicePort" value="Inventory"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="Inventory"/>
+  <ns1:parameter name="className" value="main.Inventory"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="InventoryService"/>
  </ns1:service>
