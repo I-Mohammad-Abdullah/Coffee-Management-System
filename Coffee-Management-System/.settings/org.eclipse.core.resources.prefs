@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//src/main/CashonDelivery.java=UTF-8
+encoding//src/main/CashonDeliveryService.java=UTF-8
+encoding//src/main/CashonDeliveryServiceLocator.java=UTF-8
+encoding//src/main/CashonDeliverySoapBindingStub.java=UTF-8
+encoding//src/main/CustomerRegister.java=UTF-8
+encoding//src/main/CustomerRegisterService.java=UTF-8
+encoding//src/main/CustomerRegisterServiceLocator.java=UTF-8
+encoding//src/main/CustomerRegisterSoapBindingStub.java=UTF-8
+encoding//src/main/Inventory.java=UTF-8
+encoding//src/main/InventoryService.java=UTF-8
+encoding//src/main/InventoryServiceLocator.java=UTF-8
+encoding//src/main/InventorySoapBindingStub.java=UTF-8
+encoding//src/main/OrderCoffee.java=UTF-8
+encoding//src/main/OrderCoffeeService.java=UTF-8
+encoding//src/main/OrderCoffeeServiceLocator.java=UTF-8
+encoding//src/main/OrderCoffeeSoapBindingStub.java=UTF-8
